@@ -1,0 +1,923 @@
+/* =====================================================
+   CSS VARIABLES - Design Tokens
+   ===================================================== */
+:root {
+  /* Colors */
+  --color-primary: #df2342;
+  --color-secondary: #00AEEF;
+  --color-header-bg: #F5F5F5;
+  --color-section-header: #E8E8E8;
+  --color-border: #000000;
+  --color-border-light: #CCCCCC;
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-check: #28a745;
+  --color-red: #a81515;
+  --color-grey-light: #f8f9fa;
+  --color-grey-medium: #808080;
+  --color-grey-dark: #4d4d4d;
+  --color-badge-bg: #a6a6a6;
+  
+  /* A4 Dimensions */
+  --page-width: 210mm;
+  --page-height: 297mm;
+  --page-margin: 5mm;
+  
+  /* Typography */
+  --font-primary: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  --font-size-xxs: 7pt;
+  --font-size-xs: 8pt;
+  --font-size-sm: 9pt;
+  --font-size-base: 10pt;
+  --font-size-lg: 11pt;
+  --font-size-xl: 12pt;
+  --font-size-title: 17pt;
+  
+  /* Spacing */
+  --spacing-xs: 1mm;
+  --spacing-sm: 2mm;
+  --spacing-md: 3mm;
+}
+
+/* =====================================================
+   RESET & BASE STYLES
+   ===================================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10pt;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.2;
+  color: var(--color-text);
+  background: #E0E0E0;
+  direction: ltr;
+}
+
+/* =====================================================
+   A4 PAGE CONTAINER
+   ===================================================== */
+.page {
+  width: var(--page-width);
+  height: var(--page-height);
+  padding: var(--page-margin);
+  margin: 10mm auto;
+  background: var(--color-white);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* =====================================================
+   HEADER SECTION
+   ===================================================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.header-left {
+  flex: 1;
+}
+
+/* Header Text & Logo Construction */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.check-mark-icon {
+  margin-top: 5px;
+  width: 25pt;
+  height: 25pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-mark-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.brand-text {
+  display: flex;
+  align-items: baseline;
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.auto-master {
+  font-family: 'Arial', sans-serif;
+  font-weight: 900;
+  font-size: 25pt;
+  color: var(--color-red);
+}
+
+.pro {
+  font-family: 'Arial', sans-serif;
+  font-size: 8pt;
+  color: var(--color-red);
+  margin-left: -5px;
+  position: relative;
+  bottom: 0px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.registered-mark {
+  color: var(--color-red);
+  font-weight: 900;
+  position: relative;
+  top: -20px;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: var(--font-size-sm);
+  direction: ltr;
+  text-align: right;
+  padding-top: 4px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  direction: ltr;
+  color: var(--color-black);
+  font-weight: 700;
+}
+
+.contact-icon-circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.07px solid var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+}
+
+.contact-icon-circle svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--color-black);
+  stroke-width: 3;
+}
+
+/* =====================================================
+   BODY CONTAINER
+   ===================================================== */
+.body-container {
+  flex: 1;
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 0 15px;
+  margin-bottom: 20px;
+}
+
+/* =====================================================
+   DATE ROW (Outside body container)
+   ===================================================== */
+.date-row {
+  display: flex;
+  gap: 6px;
+  font-size: var(--font-size-sm);
+  direction: ltr;
+  margin-bottom: 5px;
+  padding: 1px 0;
+}
+
+.date-label {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.date-value,
+.time-value {
+  color: #13c013;
+  font-weight: 700;
+}
+
+/* =====================================================
+   SECTION LABEL (Common)
+   ===================================================== */
+.section-label {
+  background: var(--color-section-header);
+  padding: 5px;
+  font-weight: 900;
+  font-size: var(--font-size-base);
+  text-align: center;
+  direction: rtl;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+}
+
+/* =====================================================
+   TITLE ROW
+   ===================================================== */
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.title-row-left,
+.title-row-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-size: var(--font-size-xs);
+  flex: 1;
+  margin-top: 5px;
+}
+
+.title-row-left {
+  align-items: flex-start;
+}
+
+.title-row-right {
+  align-items: flex-end;
+}
+
+.title-row-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background: var(--color-badge-bg);  
+  padding: 5px 0px;
+  transform: translateY(-50%);
+  color: var(--color-white);
+}
+
+.title-badge {
+  font-size: var(--font-size-title);
+  font-weight: 700;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.job-number {
+  font-size: var(--font-size-base);
+  margin-bottom: 1px;
+}
+
+.entry-exit-row {
+  display: flex;
+  align-items: center;
+}
+
+.ee-label {
+  font-weight: 700;
+  min-width: 28px;
+  text-align: right;
+  direction: rtl;
+   padding: 5px 15px;
+  background-color: var(--color-badge-bg);
+  color: var(--color-white);
+}
+
+.ee-data {
+  direction: ltr;
+}
+
+.ee-data-container {
+  padding: 4px;
+  border: 1px solid var(--color-border);
+  border-right: none;
+  font-weight: 900;
+  display: flex;
+  gap: 5px;
+}
+
+/* =====================================================
+   DATA ROW SECTION (Customer)
+   ===================================================== */
+
+.data-row-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px;
+  direction: rtl;
+  border: 1px solid var(--color-border);
+  border-top: none;
+  padding-left: 30px;
+  margin-bottom: 10px;
+}
+
+.data-field {
+  display: flex;
+  gap: 4px;
+}
+
+.field-label {
+  font-weight: 700;
+}
+
+.field-value {
+  color: var(--color-text-light);
+  border-bottom: 1px dotted var(--color-border-light);
+  padding-bottom: 3px;
+  min-width: 100px;
+  display: inline-block;
+  text-align: center;
+}
+
+
+/* =====================================================
+   VEHICLE ROW
+   ===================================================== */
+
+.vehicle-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-xs);
+  direction: rtl;
+}
+
+.vehicle-table td {
+  padding: 3px;
+  border: 1px solid var(--color-border-light);
+  text-align: center;
+}
+
+.v-label {
+  font-weight: 900;
+  
+  white-space: nowrap;
+}
+
+.v-value {
+  color: var(--color-text-light);
+  border-bottom: 1px dotted var(--color-border-light);
+  min-width: 50px;
+}
+
+
+/* =====================================================
+   TWO COLUMN SECTION
+   ===================================================== */
+.two-column-section {
+  display: flex;
+  gap:10px;
+  margin: 10px 0 40px;
+}
+
+.inspection-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.inspection-rows-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.diagram-column {
+  width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insp-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid var(--color-border);
+  padding-bottom: 10px;
+  direction: ltr;
+}
+
+.insp-label {
+  font-weight: 700;
+  white-space: nowrap;
+  min-width: 110px;
+  text-align: right;
+  direction: rtl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: 1px solid var(--color-border);
+  border-top: none;
+  border-right: none;
+  background-color: var(--color-section-header);
+  color: var(--color-black);
+}
+
+.insp-items {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  font-size: var(--font-size-base);
+  direction: rtl;
+}
+
+.square-check {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #208537;
+  color: #208537; /* Changed to green */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 2px;
+}
+
+.insp-value {
+  color: #208537;
+  font-weight: 700;
+}
+
+.highlight-green {
+  background-color: #ececec;
+  color: #208537;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+}
+
+
+/* Update car diagram for vertical strip */
+.car-diagram-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.car-diagram-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: 1px solid var(--color-border);
+  border-top: none;
+}
+
+.damage-marker {
+  position: absolute;
+  color: #ff0000; /* Bright red for markers */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-symbol {
+  font-size: 15pt;
+  font-weight: bold;
+  opacity: 0.9;
+  line-height: 1;
+}
+
+.marker-number {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #ff0000;
+  color: #ffffff;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  font-size: 6pt;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ffffff;
+}
+
+/* Specific styling for types */
+.marker-arrow .marker-symbol {
+  font-size: 20pt;
+  transform: rotate(0deg);
+}
+
+.marker-circle .marker-symbol {
+  font-size: 22pt;
+}
+
+.marker-x .marker-symbol {
+  font-size: 18pt;
+}
+
+
+
+/* =====================================================
+   SERVICES ROW
+   ===================================================== */
+
+.services-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 25px;
+  padding: 10px 20px;
+  direction: rtl;
+  list-style-type: none; /* Using pseudo-element for better alignment Control */
+  border: 1px solid var(--color-border);
+  border-top: none;
+  margin-bottom: 15px;
+}
+
+.service-item {
+  color: #208537;
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  display: flex;
+  align-items: center; /* Vertically center bullet and text */
+  gap: 8px;
+}
+
+.service-item::before {
+  content: "•";
+  color: #208537;
+  font-size: 1.5em;
+  line-height: 1;
+  display: inline-block;
+}
+
+/* =====================================================
+   PARTS TABLE
+   ===================================================== */
+
+.parts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-xs);
+  direction: rtl;
+}
+
+.parts-table th,
+.parts-table td {
+  border: 1px solid var(--color-border-light);
+  padding: 5px 8px; /* Increased padding */
+  text-align: center;
+}
+
+.parts-table td {
+  color: #208537; /* Consistent green for values */
+  font-weight: 700;
+}
+
+
+.parts-table th {
+  font-weight: 700;
+}
+
+.parts-table td:nth-child(odd) {
+  text-align: right;
+}
+
+/* =====================================================
+   TERMS ROW
+   ===================================================== */
+.bottom-container {
+  margin-top: auto; /* Push to bottom of the page if possible */
+  display: flex;
+  flex-direction: column;
+}
+.right-align {
+  text-align: right;
+  padding: 5px 10px 10px;
+}
+
+.terms-row {
+  border: 1px solid var(--color-border);
+  margin-bottom: 5px;
+}
+
+
+.terms-content {
+  padding: 2px 6px;
+  direction: rtl;
+}
+
+.terms-list {
+  font-size: var(--font-size-xxs);
+  padding-right: 10px;  
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.terms-list li {
+  margin-bottom: 1px;
+  color: #208537;
+  font-weight: 700;
+}
+
+.terms-confirm {
+  margin-top: 5px;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  text-align: right;
+  padding: 5px;
+  background: transparent;
+  color: #208537;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Since it's RTL, flex-start is right */
+  gap: 10px;
+}
+
+/* =====================================================
+   SIGNATURE ROW
+   ===================================================== */
+.signature-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 10px;
+  direction: rtl;
+  font-size: var(--font-size-xs);
+}
+
+.sig-box {
+  border: 1px solid var(--color-border);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sig-qr {
+  align-items: center;
+}
+
+.qr-img {
+  width: 80px;
+  height: 80px;
+  display: block; 
+}
+
+
+.sig-center {
+  flex: 2;
+  gap: 10px;
+}
+
+.sig-technician {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.sig-field {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sig-space-left {
+  padding-left: 30mm; /* Large space on the left for physical signature */
+}
+
+
+.sig-label {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sig-name {
+  color: #208537;
+  font-weight: 700;
+  min-width: 100px;
+}
+
+.sig-line {
+  width: 30mm;
+  border-bottom: 1px solid var(--color-black);
+  height: 1.2em;
+}
+
+.sig-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  padding-top: 5px;
+}
+
+.sig-text {
+  color: #208537;
+  font-weight: 700;
+  flex: 1;
+  min-width: 150px;
+}
+
+.sig-customer {
+  flex: 1;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+
+/* =====================================================
+   FLOATING ACTIONS (No Print)
+   ===================================================== */
+.floating-actions {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.action-btn {
+  padding: 12px 24px;
+  text-decoration: none;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  background: #9a1830;
+}
+
+/* =====================================================
+   PRINT STYLES
+   ===================================================== */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body {
+    background: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .page {
+    margin: 0;
+    box-shadow: none;
+    width: 210mm;
+    height: 297mm;
+    page-break-after: always;
+  }
+  
+  .section-label,
+  .title-badge,
+  .v-label {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE STYLES
+   ===================================================== */
+@media screen and (max-width: 900px) {
+  .page {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    margin: 0;
+    padding: 4mm;
+  }
+
+  /* Header Responsiveness */
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .header-right {
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Title Row Stacking */
+  .title-row {
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 0;
+  }
+
+  .title-row-center {
+    order: -1; /* Keep title at top */
+    transform: none; /* Remove overlap for mobile readability */
+    margin-bottom: 20px;
+  }
+
+  .title-row-left,
+  .title-row-right {
+    width: 100%;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  /* Two Column Section */
+  .two-column-section {
+    flex-direction: column-reverse;
+    gap: 30px;
+  }
+
+  .diagram-column {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    border: none;
+  }
+  
+  .car-diagram-wrapper {
+    aspect-ratio: 140 / 400;
+  }
+
+  /* Data Rows */
+  .data-row-content {
+    flex-direction: column;
+    padding-left: 10px;
+    gap: 12px;
+    padding-bottom: 15px;
+  }
+
+  /* Signature Row */
+  .signature-row {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .sig-technician, .sig-notes, .sig-customer {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .vehicle-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --font-size-base: 9pt;
+    --font-size-sm: 8pt;
+    --font-size-xs: 7pt;
+  }
+  
+  .brand-text .auto-master {
+    font-size: 20pt;
+  }
+  
+  .brand-text .pro {
+    font-size: 7pt;
+  }
+
+  .ee-data-container {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
