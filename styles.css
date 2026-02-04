@@ -78,6 +78,11 @@ body {
   overflow: hidden;
 }
 
+.page.page-large {
+  width: 297mm;
+  height: 420mm;
+}
+
 /* =====================================================
    HEADER SECTION
    ===================================================== */
@@ -802,6 +807,11 @@ body {
     height: 297mm;
     page-break-after: always;
   }
+
+  .page.page-large {
+    width: 297mm;
+    height: 420mm;
+  }
   
   .section-label,
   .title-badge,
@@ -921,3 +931,277 @@ body {
   }
 }
 
+/* =====================================================
+   DENSE A4 LAYOUT (.page-dense)
+   ===================================================== */
+.page-dense {
+  /* Override Variables for compact scale - Slightly increased */
+  --font-size-xxs: 7pt;
+  --font-size-xs: 8pt;
+  --font-size-sm: 9pt;
+  --font-size-base: 9.5pt;
+  --font-size-lg: 10.5pt;
+  --font-size-xl: 11.5pt;
+  --font-size-title: 14pt;
+  --spacing-sm: 1.5mm;
+  --spacing-md: 2.5mm;
+
+  /* Force standard A4 size in case of conflict */
+  width: 210mm;
+  height: 297mm;
+  padding: 4mm; /* Reduced padding from 5mm */
+  padding-bottom: 2mm;
+}
+
+/* Compact Header */
+.page-dense .header {
+  padding-bottom: 2px;
+  margin-bottom: 5px;
+}
+.page-dense .check-mark-icon {
+  width: 20pt;
+  height: 20pt;
+}
+.page-dense .auto-master {
+  font-size: 25pt; /* Restored to original size */
+}
+.page-dense .contact-item {
+  gap: 4px;
+}
+.page-dense .contact-icon-circle {
+  width: 12px;
+  height: 12px;
+}
+
+/* Tighter Sections */
+.page-dense .date-row {
+  margin-bottom: 2px;
+  font-size: 7pt;
+}
+.page-dense .body-container {
+  padding: 0 8px;
+  margin-bottom: 5px;
+}
+.page-dense .title-row {
+  margin-bottom: 4px;
+}
+.page-dense .title-badge {
+  margin-bottom: 2px;
+}
+.page-dense .data-row-content {
+  padding: 3px;
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+/* Compact Vehicle Table */
+.page-dense .vehicle-row {
+  margin-bottom: 6px;
+}
+.page-dense .vehicle-table td {
+  padding: 1px 3px;
+}
+
+/* Tighter Inspection/Grid */
+.page-dense .two-column-section {
+  margin: 5px 0 10px;
+  gap: 5px;
+}
+.page-dense .insp-row {
+  padding-bottom: 4px;
+}
+.page-dense .insp-label {
+  padding: 2px;
+  min-width: 90px;
+}
+.page-dense .insp-items {
+  gap: 10px;
+  font-size: var(--font-size-sm);
+}
+.page-dense .square-check {
+  width: 11px;
+  height: 11px;
+  font-size: 11px;
+}
+.page-dense .highlight-green {
+  padding: 0 4px;
+  font-size: 8pt;
+  line-height: 1.1;
+  border-radius: 2px;
+}
+
+/* Compact Services */
+.page-dense .services-row {
+  margin-bottom: 5px;
+}
+.page-dense .services-list {
+  padding: 4px 10px;
+  gap: 6px 15px;
+  margin-bottom: 5px;
+}
+.page-dense .service-item {
+  font-size: 8pt;
+}
+
+/* Compact Parts Table */
+.page-dense .parts-row {
+  margin-bottom: 2px;
+}
+.page-dense .parts-table th, 
+.page-dense .parts-table td {
+  padding: 1px 4px;
+  font-size: 7.5pt;
+}
+
+/* Compact Terms */
+.page-dense .bottom-container {
+  margin-top: 2px;
+}
+.page-dense .terms-list {
+  margin-bottom: 4px;
+  padding-right: 15px;
+}
+.page-dense .terms-list li {
+  margin-bottom: 2px;
+  line-height: 1.1;
+}
+.page-dense .terms-confirm {
+  margin-top: 2px;
+  font-size: 7.5pt;
+  padding: 2px;
+}
+
+/* Compact Signatures */
+.page-dense .signature-row {
+  gap: 5px;
+}
+.page-dense .sig-box {
+  padding: 4px;
+}
+.page-dense .qr-img {
+  width: 60px;
+  height: 60px;
+}
+.page-dense .sig-technician {
+  gap: 10px;
+  margin-bottom: 2px;
+}
+.page-dense .sig-space-left {
+  padding-left: 15mm;
+}
+.page-dense .sig-notes {
+  padding-top: 2px;
+  flex-direction: row; /* Horizontal layout for space */
+  align-items: center;
+}
+.page-dense .sig-text {
+  min-width: unset;
+}
+
+
+/* =====================================================
+   RESPONSIVE OVERRIDES FOR DENSE LAYOUT
+   ===================================================== */
+@media screen and (max-width: 900px) {
+  .page-dense {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    margin: 0;
+    padding: 10px;
+  }
+
+  /* Reset Header in Dense Mode */
+  .page-dense .header {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Reset Title Row */
+  .page-dense .title-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .page-dense .title-row-center {
+    order: -1;
+    transform: none;
+    margin-bottom: 10px;
+  }
+
+  .page-dense .title-row-left,
+  .page-dense .title-row-right {
+    width: 100%;
+    align-items: center;
+  }
+
+  /* Stack Data Sections */
+  .page-dense .data-row-content {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .page-dense .vehicle-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  /* Stack Inspection & Diagram */
+  .page-dense .two-column-section {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+
+  .page-dense .diagram-column {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* Adjust Inspection Items for Mobile */
+  .page-dense .insp-row {
+    flex-direction: column-reverse; /* Label on top */
+    align-items: stretch;
+    gap: 5px;
+  }
+
+  .page-dense .insp-label {
+    text-align: center;
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-bottom: none;
+  }
+  
+  .page-dense .insp-items {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Stack Parts Table */
+  .page-dense .parts-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  /* Stack Signatures */
+  .page-dense .signature-row {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .page-dense .sig-box, 
+  .page-dense .sig-technician, 
+  .page-dense .sig-notes {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .page-dense .sig-notes {
+    flex-direction: column;
+  }
+}
