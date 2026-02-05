@@ -67,15 +67,18 @@ body {
    A4 PAGE CONTAINER
    ===================================================== */
 .page {
-  width: var(--page-width);
-  height: var(--page-height);
+  width: 100%;
+  max-width: 210mm;
+  min-height: 297mm;
+  height: auto;
   padding: var(--page-margin);
-  margin: 10mm auto;
+  margin: 20px auto;
   background: var(--color-white);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  position: relative;
+  page-break-after: always;
 }
 
 .page.page-large {
@@ -554,6 +557,7 @@ body {
   border: 1px solid var(--color-border);
   border-top: none;
   margin-bottom: 15px;
+  break-inside: avoid;
 }
 
 .service-item {
@@ -589,6 +593,11 @@ body {
   border: 1px solid var(--color-border-light);
   padding: 5px 8px; /* Increased padding */
   text-align: center;
+}
+
+.parts-table tr {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }
 
 .parts-table td {
@@ -666,6 +675,8 @@ body {
   gap: 10px;
   direction: rtl;
   font-size: var(--font-size-xs);
+  break-inside: avoid;
+  page-break-inside: avoid;
 }
 
 .sig-box {
@@ -804,8 +815,21 @@ body {
     margin: 0;
     box-shadow: none;
     width: 210mm;
-    height: 297mm;
+    min-height: 297mm;
+    height: auto;
     page-break-after: always;
+    overflow: visible;
+    /* Restore print margin */
+    padding: 0;
+    display: block; /* Ensure breaks work */
+  }
+
+  /* Reset forced break since it's now a new page element */
+  .bottom-container {
+    break-before: auto;
+    page-break-before: auto;
+    margin-top: 20px;
+    display: block;
   }
 
   .page.page-large {
@@ -979,8 +1003,8 @@ body {
   font-size: 7pt;
 }
 .page-dense .body-container {
-  padding: 0 8px;
-  margin-bottom: 5px;
+  padding: 0 12px;
+  margin-bottom: 10px;
 }
 .page-dense .title-row {
   margin-bottom: 4px;
@@ -989,14 +1013,14 @@ body {
   margin-bottom: 2px;
 }
 .page-dense .data-row-content {
-  padding: 3px;
-  padding-left: 10px;
-  margin-bottom: 5px;
+  padding: 6px;
+  padding-left: 15px;
+  margin-bottom: 12px;
 }
 
 /* Compact Vehicle Table */
 .page-dense .vehicle-row {
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 .page-dense .vehicle-table td {
   padding: 1px 3px;
@@ -1004,8 +1028,8 @@ body {
 
 /* Tighter Inspection/Grid */
 .page-dense .two-column-section {
-  margin: 5px 0 10px;
-  gap: 5px;
+  margin: 10px 0 40px;
+  gap: 12px;
 }
 .page-dense .insp-row {
   padding-bottom: 4px;
@@ -1032,12 +1056,12 @@ body {
 
 /* Compact Services */
 .page-dense .services-row {
-  margin-bottom: 5px;
+  margin-bottom: 12px;
 }
 .page-dense .services-list {
-  padding: 4px 10px;
-  gap: 6px 15px;
-  margin-bottom: 5px;
+  padding: 8px 15px;
+  gap: 8px 20px;
+  margin-bottom: 12px;
 }
 .page-dense .service-item {
   font-size: 8pt;
@@ -1045,7 +1069,7 @@ body {
 
 /* Compact Parts Table */
 .page-dense .parts-row {
-  margin-bottom: 2px;
+  margin-bottom: 15px;
 }
 .page-dense .parts-table th, 
 .page-dense .parts-table td {
@@ -1055,7 +1079,7 @@ body {
 
 /* Compact Terms */
 .page-dense .bottom-container {
-  margin-top: 2px;
+  margin-top: 10px;
 }
 .page-dense .terms-list {
   margin-bottom: 4px;
